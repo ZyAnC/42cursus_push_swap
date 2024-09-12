@@ -3,14 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yzheng <yzheng@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: yzheng <yzheng@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 09:39:28 by yzheng            #+#    #+#             */
-/*   Updated: 2024/04/15 22:33:48 by yzheng           ###   ########.fr       */
+/*   Updated: 2024/09/12 15:45:21 by yzheng           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libft.h"
+
 #include <limits.h>
+#include "./libft.h"
+
+static void	ferror(void)
+{
+	ft_putstr_fd("Error\n", 2);
+	exit(1);
+}
 
 int	ft_atoi(const char *str)
 {
@@ -32,9 +39,9 @@ int	ft_atoi(const char *str)
 	{
 		result = result * 10 +(*str - '0');
 		if (result < 0 && sign > 0)
-			return (-1);
+			ferror();
 		if (result < 0 && sign < 0)
-			return (0);
+			ferror();
 		str++;
 	}
 	return ((int)(result * sign));
@@ -43,6 +50,6 @@ int	ft_atoi(const char *str)
 /*#include <stdio.h>
 int main (){
 	char *ss = {" + 2"};
-    printf("%d",atoi(ss));
+	printf("%d",atoi(ss));
 	return 0;
 }*/

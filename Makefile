@@ -8,7 +8,7 @@ PRINTF := ./src/printf
 
 LIBS := $(LIBFT)/libft.a $(PRINTF)/libftprintf.a 
 
-SRCS := push_swap.c
+SRCS := push_swap.c sort.c instruction.c sort_utils.c check.c
 OBJS := ${SRCS:.c=.o}
 
 
