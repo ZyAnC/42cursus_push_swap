@@ -6,7 +6,7 @@
 /*   By: yzheng <yzheng@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 17:05:08 by yzheng            #+#    #+#             */
-/*   Updated: 2024/09/12 15:53:23 by yzheng           ###   ########.fr       */
+/*   Updated: 2024/09/12 19:50:19 by yzheng           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ int	main(int ac, char **av)
 	if (!fill_array(ac, av, &a, &b))
 		error();
 	is_sort(b, ac - 1, a);
+	ft_printf("%d",ac);
 	if (ac == 3)
 		ft_printf("sa\n");
 	else if (ac == 4)

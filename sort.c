@@ -6,7 +6,7 @@
 /*   By: yzheng <yzheng@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 09:56:34 by yzheng            #+#    #+#             */
-/*   Updated: 2024/09/12 15:58:02 by yzheng           ###   ########.fr       */
+/*   Updated: 2024/09/12 18:04:27 by yzheng           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,30 @@ void	sort_3(int *a, t_stacks *s)
 		sa(s);
 }
 
+
+int	is_sorted(int *tab, int n)
+{
+	int	i;
+	int	ascending;
+	int	descending;
+
+	i = 0;
+	ascending = 1;
+	descending = 1;
+	while (i < n - 1)
+	{
+		if (tab[i] < tab[i + 1])
+			descending = 0;
+		if (tab[i] > tab[i + 1])
+			ascending = 0;
+		i++;
+	}
+	if (ascending == 1 || descending == 1)
+		return (1);
+	else
+		return (0);
+}
+
 void	radix_sort(int n, t_stacks *s)
 {
 	int	max_index;
@@ -87,6 +111,10 @@ void	radix_sort(int n, t_stacks *s)
 		j = 0;
 		while (j < n)
 		{
+			
+			
+			if (is_sorted(s->stack_a,s->top_a))
+				break ;
 			if (((s->stack_a[0] >> i) & 1) == 1)
 				ra(s);
 			else
