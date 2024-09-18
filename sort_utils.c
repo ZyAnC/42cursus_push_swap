@@ -3,38 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   sort_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yzheng <yzheng@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yzheng <yzheng@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 14:36:10 by yzheng            #+#    #+#             */
-/*   Updated: 2024/09/12 16:02:02 by yzheng           ###   ########.fr       */
+/*   Updated: 2024/09/18 19:00:39 by yzheng           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	init_stacks(t_stacks *s)
-{
-	s->top_a = -1;
-	s->top_b = -1;
-}
-
-void	pb(t_stacks *s)
-{
-	int	i;
-
-	if (s->top_a >= 0)
-	{
-		s->stack_b[++s->top_b] = s->stack_a[0];
-		i = 0;
-		while (i < s->top_a)
-		{
-			s->stack_a[i] = s->stack_a[i + 1];
-			i++;
-		}
-		s->top_a--;
-		ft_printf("pb\n");
-	}
-}
 
 void	set_index(int *a, int *b, int n)
 {
@@ -88,6 +64,30 @@ void	sort_and_index(int *a, int *tab, int size)
 		i++;
 	}
 	set_index(a, tab, size);
+}
+
+void	is_sort2(int *b, int n, int *a, char **av)
+{
+	int	i;
+
+	i = 1;
+	while (i < n)
+	{
+		if (b[i] > b[i - 1])
+			i++;
+		else
+			break ;
+	}
+	if (i == n)
+	{
+		n--;
+		while (n >= 0)
+			free(av[n--]);
+		free(av);
+		free(a);
+		free(b);
+		exit(0);
+	}
 }
 
 void	is_sort(int *b, int n, int *a)

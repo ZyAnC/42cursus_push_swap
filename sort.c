@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yzheng <yzheng@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yzheng <yzheng@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 09:56:34 by yzheng            #+#    #+#             */
-/*   Updated: 2024/09/12 18:04:27 by yzheng           ###   ########.fr       */
+/*   Updated: 2024/09/18 19:00:40 by yzheng           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	sort_4_5(int ac, int *a, int *b, t_stacks *s)
 	sort_and_index(a, b, ac - 1);
 	while (i < ac - 1)
 		s->stack_a[++s->top_a] = a[i++];
-	while (s->top_a >= 3)
+	while (s->top_b <= 0)
 	{
 		if (s->stack_a[0] == 0 || s->stack_a[0] == 1)
 			pb(s);
@@ -70,30 +70,6 @@ void	sort_3(int *a, t_stacks *s)
 		sa(s);
 }
 
-
-int	is_sorted(int *tab, int n)
-{
-	int	i;
-	int	ascending;
-	int	descending;
-
-	i = 0;
-	ascending = 1;
-	descending = 1;
-	while (i < n - 1)
-	{
-		if (tab[i] < tab[i + 1])
-			descending = 0;
-		if (tab[i] > tab[i + 1])
-			ascending = 0;
-		i++;
-	}
-	if (ascending == 1 || descending == 1)
-		return (1);
-	else
-		return (0);
-}
-
 void	radix_sort(int n, t_stacks *s)
 {
 	int	max_index;
@@ -111,10 +87,6 @@ void	radix_sort(int n, t_stacks *s)
 		j = 0;
 		while (j < n)
 		{
-			
-			
-			if (is_sorted(s->stack_a,s->top_a))
-				break ;
 			if (((s->stack_a[0] >> i) & 1) == 1)
 				ra(s);
 			else
