@@ -88,15 +88,28 @@ int	main(int ac, char **av)
 	else if (ac == 2)
 	{
 		arg = ft_split(av[1], ' ');
+		if (!arg)
+			error();
 		i = 0;
 		while (arg[i])
 			i++;
 		if (!checkstrarg(i, arg))
+		{
+			while(i)
+				free(arg[i--]);
+			free(arg);
 			error();
+		}
 		if (i == 1)
+		{
+			while(i)
+				free(arg[i--]);
+			free(arg);
 			exit(0);
+		}
 		main_model2(i + 1, arg);
 	}
 	else
 		main_model(ac, av);
 }
+
