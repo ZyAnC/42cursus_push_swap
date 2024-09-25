@@ -6,7 +6,7 @@
 /*   By: yzheng <yzheng@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 11:50:46 by yzheng            #+#    #+#             */
-/*   Updated: 2024/09/25 10:45:13 by yzheng           ###   ########.fr       */
+/*   Updated: 2024/09/25 11:13:16 by yzheng           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,10 @@ static int	sp(char **result, char *str, char charset, int j)
 	return (1);
 }
 
-char **ft_split(char *str, char charset)
+char	**ft_split(char *str, char charset)
 {
-	char **result;
-	int size;
+	char		**result;
+	int			size;
 
 	if (!str || !*str)
 		return (NULL);
@@ -70,7 +70,6 @@ char **ft_split(char *str, char charset)
 	result = malloc((size + 1) * sizeof(char *));
 	if (result == NULL)
 		return (NULL);
-
 	if (sp(result, str, charset, 0))
 		return (result);
 	else

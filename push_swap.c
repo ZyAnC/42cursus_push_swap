@@ -6,7 +6,7 @@
 /*   By: yzheng <yzheng@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 17:05:08 by yzheng            #+#    #+#             */
-/*   Updated: 2024/09/25 10:45:48 by yzheng           ###   ########.fr       */
+/*   Updated: 2024/09/25 11:14:38 by yzheng           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,13 +77,13 @@ int	checkstrarg(int ac, char **av)
 	}
 	return (1);
 }
-void	checkall(int	i, char **arg)
-{
 
+void	checkall(int i, char **arg)
+{
 	if (!checkstrarg(i, arg))
 	{
 		i--;
-		while(i >= 0)
+		while (i >= 0)
 			free(arg[i--]);
 		free(arg);
 		error();
@@ -95,6 +95,7 @@ void	checkall(int	i, char **arg)
 		exit(0);
 	}
 }
+
 int	main(int ac, char **av)
 {
 	char	**arg;

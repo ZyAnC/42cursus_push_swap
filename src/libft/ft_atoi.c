@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yzheng <yzheng@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yzheng <yzheng@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 09:39:28 by yzheng            #+#    #+#             */
-/*   Updated: 2024/09/12 15:45:21 by yzheng           ###   ########.fr       */
+/*   Updated: 2024/09/25 11:14:53 by yzheng           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,7 @@ int	ft_atoi(const char *str)
 	while ((*str >= '0' && *str <= '9'))
 	{
 		result = result * 10 +(*str - '0');
-		if (result < 0 && sign > 0)
-			ferror();
-		if (result < 0 && sign < 0)
+		if (result * sign > INT_MAX || result * sign < INT_MIN)
 			ferror();
 		str++;
 	}
