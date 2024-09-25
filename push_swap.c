@@ -6,7 +6,7 @@
 /*   By: yzheng <yzheng@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 17:05:08 by yzheng            #+#    #+#             */
-/*   Updated: 2024/09/18 19:00:37 by yzheng           ###   ########.fr       */
+/*   Updated: 2024/09/25 10:45:48 by yzheng           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,24 @@ int	checkstrarg(int ac, char **av)
 	}
 	return (1);
 }
+void	checkall(int	i, char **arg)
+{
 
+	if (!checkstrarg(i, arg))
+	{
+		i--;
+		while(i >= 0)
+			free(arg[i--]);
+		free(arg);
+		error();
+	}
+	if (i == 1)
+	{
+		free(arg[0]);
+		free(arg);
+		exit(0);
+	}
+}
 int	main(int ac, char **av)
 {
 	char	**arg;
@@ -91,25 +108,11 @@ int	main(int ac, char **av)
 		if (!arg)
 			error();
 		i = 0;
-		while (arg[i])
+		while (arg[i] != NULL)
 			i++;
-		if (!checkstrarg(i, arg))
-		{
-			while(i)
-				free(arg[i--]);
-			free(arg);
-			error();
-		}
-		if (i == 1)
-		{
-			while(i)
-				free(arg[i--]);
-			free(arg);
-			exit(0);
-		}
+		checkall(i, arg);
 		main_model2(i + 1, arg);
 	}
 	else
 		main_model(ac, av);
 }
-

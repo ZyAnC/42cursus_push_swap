@@ -6,7 +6,7 @@
 /*   By: yzheng <yzheng@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 14:33:25 by yzheng            #+#    #+#             */
-/*   Updated: 2024/09/18 19:00:33 by yzheng           ###   ########.fr       */
+/*   Updated: 2024/09/23 11:28:24 by yzheng           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,10 @@ int	is_overflow(char *str)
 
 int	is_valid(char *str)
 {
+	if (!str)
+		return (0);
+	if (*str == ' ')
+		return (0);
 	if (*str == '\0')
 		return (0);
 	if (!is_digit_str(str))

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yzheng <yzheng@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yzheng <yzheng@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 17:53:13 by yzheng            #+#    #+#             */
-/*   Updated: 2024/08/14 17:56:48 by yzheng           ###   ########.fr       */
+/*   Updated: 2024/09/23 11:50:14 by yzheng           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,23 +76,28 @@ int	handle_normal(t_ParseContext *ctx)
 	(*ctx->j)++;
 	return (1);
 }
-
-int	process_string(t_ParseContext *ctx)
+int process_string(t_ParseContext *ctx)
 {
-	while (ctx->str[*ctx->i])
-	{
-		if (ctx->str[*ctx->i] == '"' || ctx->str[*ctx->i] == '\'')
-		{
-			if (!handle_quotes(ctx, ctx->str[*ctx->i]))
-				return (0);
-		}
-		else if (ctx->str[*ctx->i] != ctx->charset)
-		{
-			if (!handle_normal(ctx))
-				return (0);
-		}
-		else
-			(*ctx->i)++;
-	}
-	return (1);
+    int end;
+
+    end = ft_strlen(ctx->str) - 1;
+    while (end >= 0 && ctx->str[end] == ctx->charset)
+        end--;
+
+    while (ctx->str[*ctx->i] && *ctx->i <= end)
+    {
+        while (ctx->str[*ctx->i] == ctx->charset && *ctx->i <= end)
+            (*ctx->i)++;
+        if (ctx->str[*ctx->i] == '"' || ctx->str[*ctx->i] == '\'')
+        {
+            if (!handle_quotes(ctx, ctx->str[*ctx->i]))
+                return (0);
+        }
+        else if (ctx->str[*ctx->i] && ctx->str[*ctx->i] != ctx->charset)
+        {
+            if (!handle_normal(ctx))
+                return (0);
+        }
+    }
+    return (1);
 }
