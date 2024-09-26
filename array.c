@@ -6,7 +6,7 @@
 /*   By: yzheng <yzheng@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 18:51:11 by yzheng            #+#    #+#             */
-/*   Updated: 2024/09/18 19:00:31 by yzheng           ###   ########.fr       */
+/*   Updated: 2024/09/26 17:11:01 by yzheng           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,21 @@ int	array_fill2(int *a, int n, char **av)
 
 int	fill_array2(int ac, char **av, int **a, int **b)
 {
+	int	i;
+
 	*a = array_alloc(ac);
 	*b = array_alloc(ac);
 	if (!*a || !*b || !array_fill2(*a, ac, av) || !array_fill2(*b, ac, av))
 	{
 		free(*a);
 		free(*b);
+		i = 0;
+		while (av[i] != NULL)
+			i++;
+		i--;
+		while (i >= 0)
+			free(av[i--]);
+		free(av);
 		return (0);
 	}
 	return (1);

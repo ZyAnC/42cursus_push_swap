@@ -6,7 +6,7 @@
 /*   By: yzheng <yzheng@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 17:05:53 by yzheng            #+#    #+#             */
-/*   Updated: 2024/09/18 19:00:38 by yzheng           ###   ########.fr       */
+/*   Updated: 2024/09/26 17:09:01 by yzheng           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,12 @@ typedef struct stack
 	int	top_b;
 }	t_stacks;
 
+typedef struct s_ms
+{
+	char	**av;
+}	t_ms;
+
+t_ms	*ms(void);
 void	error(void);
 int		is_valid(char *str);
 int		checkarg(int ac, char **av);

@@ -6,7 +6,7 @@
 /*   By: yzheng <yzheng@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 18:53:03 by yzheng            #+#    #+#             */
-/*   Updated: 2024/09/18 19:00:42 by yzheng           ###   ########.fr       */
+/*   Updated: 2024/09/26 17:10:44 by yzheng           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,13 @@ void	init_stacks(t_stacks *s)
 {
 	s->top_a = -1;
 	s->top_b = -1;
+}
+
+t_ms	*ms(void)
+{
+	static t_ms	ms;
+
+	return (&ms);
 }
 
 void	pb(t_stacks *s)

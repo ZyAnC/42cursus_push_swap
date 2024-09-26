@@ -6,7 +6,7 @@
 /*   By: yzheng <yzheng@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 14:33:25 by yzheng            #+#    #+#             */
-/*   Updated: 2024/09/23 11:28:24 by yzheng           ###   ########.fr       */
+/*   Updated: 2024/09/26 16:39:32 by yzheng           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,8 @@ int	is_overflow(char *str)
 {
 	int	num;
 
-	if (ft_strlen(str) > 10)
-	{
+	if (ft_strlen(str) >= 10)
 		num = ft_atoi(str);
-		if (num == -1 || num == 0)
-			return (1);
-	}
 	return (0);
 }
 

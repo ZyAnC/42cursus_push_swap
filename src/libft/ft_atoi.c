@@ -6,15 +6,26 @@
 /*   By: yzheng <yzheng@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 09:39:28 by yzheng            #+#    #+#             */
-/*   Updated: 2024/09/25 11:14:53 by yzheng           ###   ########.fr       */
+/*   Updated: 2024/09/26 17:10:29 by yzheng           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <limits.h>
 #include "./libft.h"
+#include <stdio.h>
+#include "../../push_swap.h"
 
-static void	ferror(void)
+static void	fterror(void)
 {
+	int	i;
+
+	i = 0;
+	while (ms()->av[i] != NULL)
+		i++;
+	i--;
+	while (i >= 0)
+		free(ms()->av[i--]);
+	free(ms()->av);
 	ft_putstr_fd("Error\n", 2);
 	exit(1);
 }
@@ -39,7 +50,7 @@ int	ft_atoi(const char *str)
 	{
 		result = result * 10 +(*str - '0');
 		if (result * sign > INT_MAX || result * sign < INT_MIN)
-			ferror();
+			fterror();
 		str++;
 	}
 	return ((int)(result * sign));
