@@ -6,7 +6,7 @@
 /*   By: yzheng <yzheng@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 17:05:08 by yzheng            #+#    #+#             */
-/*   Updated: 2024/09/26 17:08:17 by yzheng           ###   ########.fr       */
+/*   Updated: 2024/09/26 17:16:17 by yzheng           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void	main_model(int ac, char **av)
 	int			*b;
 	t_stacks	s;
 
+	ms()->a = 0;
 	if (ac <= 2)
 		exit(1);
 	if (!checkarg(ac, av))
@@ -111,6 +112,7 @@ int	main(int ac, char **av)
 		i = 0;
 		while (arg[i] != NULL)
 			i++;
+		ms()->a = 1;
 		ms()->av = arg;
 		checkall(i, arg);
 		main_model2(i + 1, arg);

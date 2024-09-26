@@ -6,7 +6,7 @@
 /*   By: yzheng <yzheng@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 09:39:28 by yzheng            #+#    #+#             */
-/*   Updated: 2024/09/26 17:10:29 by yzheng           ###   ########.fr       */
+/*   Updated: 2024/09/26 17:17:14 by yzheng           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,15 @@ static void	fterror(void)
 	int	i;
 
 	i = 0;
-	while (ms()->av[i] != NULL)
-		i++;
-	i--;
-	while (i >= 0)
-		free(ms()->av[i--]);
-	free(ms()->av);
+	if (ms()->a == 1)
+	{
+		while (ms()->av[i] != NULL)
+			i++;
+		i--;
+		while (i >= 0)
+			free(ms()->av[i--]);
+		free(ms()->av);
+	}
 	ft_putstr_fd("Error\n", 2);
 	exit(1);
 }

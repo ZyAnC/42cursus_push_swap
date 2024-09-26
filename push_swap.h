@@ -6,7 +6,7 @@
 /*   By: yzheng <yzheng@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 17:05:53 by yzheng            #+#    #+#             */
-/*   Updated: 2024/09/26 17:09:01 by yzheng           ###   ########.fr       */
+/*   Updated: 2024/09/26 17:15:22 by yzheng           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ typedef struct stack
 typedef struct s_ms
 {
 	char	**av;
+	int		a;
 }	t_ms;
 
 t_ms	*ms(void);
